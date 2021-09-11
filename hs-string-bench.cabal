@@ -1,0 +1,47 @@
+name:                hs-string-bench
+version:             0.1.0
+synopsis:            compare String, ByteString, and Text for isInfixOf
+description:
+        Simple Haskell string benchmark.
+license:             BSD3
+license-file:        LICENSE
+author:              Jens Petersen <juhpetersen@gmail.com>
+maintainer:          Jens Petersen <juhpetersen@gmail.com>
+copyright:           2021  Jens Petersen <juhpetersen@gmail.com>
+category:            Unclassified
+homepage:            https://github.com/juhp/hs-grep-bench
+bug-reports:         https://github.com/juhp/hs-grep-bench/issues
+build-type:          Simple
+--  extra-doc-files:     README.md
+--                       ChangeLog.md
+cabal-version:       2.0
+--tested-with:         GHC == 8.4.4, GHC == 8.6.5, GHC == 8.8.4, GHC == 8.10.4
+data-files:          data/lorem-ipsum
+
+source-repository head
+  type:                git
+  location:            https://github.com/juhp/hs-grep-bench.git
+
+executable hs-grep-bench
+  main-is:             Main.hs
+  -- other-modules:       Paths_hs_string_bench
+  hs-source-dirs:      src
+  build-depends:       base < 5,
+                       bytestring,
+                       tasty-bench,
+                       text
+  default-language:    Haskell2010
+  ghc-options:         -Wall
+  if impl(ghc >= 8.0)
+    ghc-options:       -Wcompat
+                       -Widentities
+                       -Wincomplete-uni-patterns
+                       -Wincomplete-record-updates
+                       -Wredundant-constraints
+  if impl(ghc >= 8.2)
+    ghc-options:       -fhide-source-paths
+  if impl(ghc >= 8.4)
+    ghc-options:       -Wmissing-export-lists
+                       -Wpartial-fields
+  if impl(ghc >= 8.10)
+    ghc-options:       -Wunused-packages
