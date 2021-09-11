@@ -4,6 +4,8 @@ This compares ``needle `isInfixOf` hay`` for
 Haskell Data.List, Data.Text, Data.ByteString, etc.
 
 This timings are made with tasty-bench.
+There are two files: toolbox.spec (an rpm spec file)
+and lorem-ipsum (familiar typographic Latin text).
 
 ## Matching words
 
@@ -21,6 +23,7 @@ The needle is the first word in a line.
     Data.ByteString.Char8: OK (0.37s)
        11 μs ± 1.0 μs
 ```
+In the middle of a long line:
 ```
   "dolorum" in data/lorem-ipsum
     Data.String:           OK (0.97s)
@@ -35,7 +38,7 @@ The needle is the first word in a line.
        13 μs ± 795 ns
 ```
 
-## No matches
+## No matches: reading over whole file
 ```
   "dolorum" in data/toolbox.spec
     Data.String:           OK (0.19s)
